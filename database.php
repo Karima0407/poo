@@ -1,2 +1,22 @@
 <?php
-// creer la classe DbConnect permettant de se connecter a la base de donnees
+class DbConnect{
+    public $connexionDataBase;
+
+    public function __construct(){
+        try{
+            $this->connexionDataBase = new PDO("mysql:host=localhost;dbname=cours_db", "root", "");
+        }catch(PDOException $e){
+            $this->connexionDataBase = $e->getMessage();
+        }
+    }
+
+    public function dbConnexion(){
+        $conn = null;
+        try{
+            $conn = new PDO("mysql:host=localhost;dbname=cours_db", "root", "");
+        }catch(PDOException $e){
+            $conn = $e->getMessage();
+        }
+        return $conn;
+    }
+}
